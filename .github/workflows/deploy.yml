@@ -20,29 +20,31 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_PUBLIC_IP }} << 'EOF'
-            # Update and install Docker and Docker Compose
+            # Actualiza el sistema y asegúrate de tener docker y docker-compose
             sudo apt update
             sudo apt install -y docker.io
             sudo apt install -y docker-compose
             sudo usermod -aG docker ubuntu
 
-            # Check if the directory exists; clone if it doesn't
+            # Agregar la clave de GitHub al archivo known_hosts para evitar problemas de verificación del host
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+            # Verifica si el repositorio ya está clonado, si no, clónalo
             if [ ! -d "/home/ubuntu/mi_proyecto/.git" ]; then
               git clone git@github.com:walterjesus88/books.git /home/ubuntu/mi_proyecto
             fi
             cd /home/ubuntu/mi_proyecto
 
-            # Pull the latest changes
+            # Obtén los últimos cambios del repositorio
             git pull
 
-            # Ensure the docker-compose.yml file exists
+            # Verifica que el archivo docker-compose.yml esté presente
             if [ ! -f "docker-compose.yml" ]; then
               echo "docker-compose.yml file not found!"
               exit 1
             fi
 
-            # Restart the Docker containers
+            # Reinicia los contenedores de Docker
             docker-compose down
             docker-compose up -d --build
           EOF
-
