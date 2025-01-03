@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'your-secret-key'
 DEBUG = True
-ALLOWED_HOSTS = ['54.215.184.113']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -133,3 +133,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 
+# En caso de que estés usando archivos multimedia
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
