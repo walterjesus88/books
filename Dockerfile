@@ -15,3 +15,6 @@ EXPOSE 8000
 
 # Comando para ejecutar Gunicorn (servidor de producción)
 CMD ["gunicorn", "myapp.wsgi:application", "--bind", "0.0.0.0:8000"]
+
+# Ejecutar collectstatic antes de iniciar Gunicorn
+RUN python manage.py collectstatic --noinput
