@@ -21,8 +21,9 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_PUBLIC_IP }} << 'EOF'
-            cd /home/ec2-user/mi_proyecto || git clone git@github.com:walterjesus88/books.git /home/ec2-user/mi_proyecto
-            cd /home/ec2-user/mi_proyecto
+            mkdir -p /home/ubuntu/mi_proyecto
+            git clone git@github.com:walterjesus88/books.git /home/ubuntu/mi_proyecto || true           
+            cd /home/ubuntu/mi_proyecto
             git pull
             docker-compose down
             docker-compose up -d --build
