@@ -26,7 +26,7 @@ jobs:
             sudo apt install -y docker-compose
             sudo usermod -aG docker ubuntu
 
-            mkdir -p /home/ubuntu/mi_proyecto
+            
             cd /home/ubuntu/mi_proyecto || git clone git@github.com:walterjesus88/books.git /home/ubuntu/mi_proyecto
             cd /home/ubuntu/mi_proyecto
             git pull
