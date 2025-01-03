@@ -1,4 +1,3 @@
-# Usa una imagen base de Python
 FROM python:3.9
 
 # Establece el directorio de trabajo
@@ -8,11 +7,11 @@ WORKDIR /app
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia el resto del c�digo
+# Copia el resto del código
 COPY . /app/
 
-# Expone el puerto que usar� el servidor
+# Expone el puerto que usará el servidor
 EXPOSE 8000
 
-# Comando para ejecutar el servidor de desarrollo de Django
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Comando para ejecutar Gunicorn (servidor de producción)
+CMD ["gunicorn", "myapp.wsgi:application", "--bind", "0.0.0.0:8000"]

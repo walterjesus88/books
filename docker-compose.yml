@@ -9,11 +9,11 @@ services:
       - .:/app
     environment:
       - PYTHONUNBUFFERED=1
-      - MONGO_HOST=mongodb  # Host de MongoDB (nombre del servicio)
-      - MONGO_PORT=27017    # Puerto de MongoDB
+      - MONGO_HOST=mongodb
+      - MONGO_PORT=27017
     depends_on:
       - mongodb
-    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    command: ["gunicorn", "myapp.wsgi:application", "--bind", "0.0.0.0:8000"]
 
   mongodb:
     image: mongo:6.0
@@ -29,7 +29,6 @@ services:
     command: mongo --host mongodb --port 27017
     depends_on:
       - mongodb
-
 
 volumes:
   mongo_data:
