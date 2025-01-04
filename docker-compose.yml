@@ -28,19 +28,22 @@ services:
       - myapp-network  # Se conecta a la red personalizada
   
 
-  
+
+
   nginx:
     image: nginx:alpine
     container_name: nginx
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
       - ./staticfiles:/app/staticfiles
     ports:
       - "80:80"
     depends_on:
       - web
     networks:
-      - myapp-network  # Se conecta a la red personalizada
+      - myapp-network
+
 
 volumes:
   mongo_data:
