@@ -27,14 +27,7 @@ services:
     networks:
       - myapp-network  # Se conecta a la red personalizada
   
-  mongodb-shell:
-    image: mongo:6.0
-    container_name: mongodb-shell
-    command: mongo --host mongodb --port 27017
-    depends_on:
-      - mongodb
-    networks:
-      - myapp-network  # Se conecta a la red personalizada
+
   
   nginx:
     image: nginx:alpine
