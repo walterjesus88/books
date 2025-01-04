@@ -7,15 +7,16 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-      
     environment:
       - PYTHONUNBUFFERED=1
       - MONGO_HOST=mongodb
       - MONGO_PORT=27017
     depends_on:
       - mongodb
-    command: ["gunicorn", "myapp.wsgi:application", "--bind", "0.0.0.0:8000"]
-
+    command: ["sh", "-c", "python manage.py collectstatic --noinput && gunicorn myapp.wsgi:application --bind 0.0.0.0:8000"]
+    networks:
+      - myapp-network  # Se conecta a la red personalizada
+  
   mongodb:
     image: mongo:6.0
     container_name: mongodb
@@ -23,25 +24,34 @@ services:
       - "27018:27017"
     volumes:
       - mongo_data:/data/db
-
+    networks:
+      - myapp-network  # Se conecta a la red personalizada
+  
   mongodb-shell:
     image: mongo:6.0
     container_name: mongodb-shell
     command: mongo --host mongodb --port 27017
     depends_on:
       - mongodb
-
+    networks:
+      - myapp-network  # Se conecta a la red personalizada
+  
   nginx:
     image: nginx:alpine
     container_name: nginx
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf  # Configuración de Nginx
-      - ./staticfiles:/app/staticfiles      # Volumen compartido para archivos estáticos
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./staticfiles:/app/staticfiles
     ports:
-      - "80:80"  # Exponer el puerto 80 para servir la aplicación
+      - "80:80"
     depends_on:
       - web
+    networks:
+      - myapp-network  # Se conecta a la red personalizada
 
 volumes:
   mongo_data:
 
+networks:
+  myapp-network:  # Definir la red personalizada
+    driver: bridge
