@@ -7,7 +7,7 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-      - ./staticfiles:/app/staticfiles  # Volumen para los archivos estáticos
+      
     environment:
       - PYTHONUNBUFFERED=1
       - MONGO_HOST=mongodb
