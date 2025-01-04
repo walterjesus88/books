@@ -6,13 +6,7 @@ Password: 123456
 
 Django
 
-Django REST Framework
-
-Docker & Docker Compose
-
-GitHub Actions (CI/CD)
-
-AWS EC2 (Deployment)
+Django REST Framework Docker & Docker Compose GitHub Actions (CI/CD) AWS EC2 (Deployment)
 
 Swagger (API documentation)
 
@@ -20,8 +14,8 @@ Swagger (API documentation)
 
 1️⃣ Clone the Repository
 
-git clone <your-repository-url>
-cd <project-folder>
+git clone https://github.com/walterjesus88/books.git
+cd books
 
 2️⃣ Build and Run with Docker
 
@@ -99,61 +93,39 @@ Endpoint
 
 Description
 
-GET
-
-/api/books/
+GET /api/books/
 
 Retrieve all books
 
-POST
-
-/api/books/
+POST /api/books/
 
 Create a new book
 
-GET
-
-/api/books/{title}/
+GET /api/books/{title}/
 
 Retrieve a book by title
 
-PUT
-
-/api/books/{title}/
+PUT /api/books/{title}/
 
 Update a book by title
 
-DELETE
-
-/api/books/{title}/
+DELETE /api/books/{title}/
 
 Delete a book by title
 
 📊 Average Price API
 
-Method
+Method Endpoint Description
 
-Endpoint
-
-Description
-
-GET
-
-/api/books/avg-price/{year}/
+GET /api/books/avg-price/{year}/
 
 Retrieve the average price of books for a given year
 
 🧑‍💻 User Registration API
 
-Method
+Method Endpoint Description
 
-Endpoint
-
-Description
-
-POST
-
-/api/register/
+POST /api/register/
 
 Register a new user
 
@@ -167,8 +139,8 @@ http://54.215.184.113:8000/swagger/
 
 🔧 Project Structure
 
-├── project-folder
-│   ├── api
+├── books
+│   ├── books
 │   │   ├── views.py
 │   │   ├── models.py
 │   │   ├── serializers.py
@@ -179,6 +151,13 @@ http://54.215.184.113:8000/swagger/
 │   └── .github
 │       └── workflows
 │           └── django.yml
+│   ├── myapp
+│   │   ├── views.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   └── urls.py
+│   │   └── manage.py
+
 
 🛡 Security Considerations
 
@@ -208,4 +187,4 @@ For any inquiries, you can contact:
 
 Author: Walter
 
-Email: [your-email@example.com]
+Email: [wjesus88@gmail.com]
