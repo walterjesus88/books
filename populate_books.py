@@ -4,7 +4,7 @@ import django
 from datetime import date
 
 # Configura el entorno Django para que puedas acceder a los modelos
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')  # Reemplaza 'myproject' con el nombre de tu proyecto
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myapp.settings')  # Reemplaza 'myproject' con el nombre de tu proyecto
 django.setup()
 
 from books.models import Book  # Reemplaza 'myapp' con el nombre de tu aplicación
