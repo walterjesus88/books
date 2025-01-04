@@ -11,6 +11,10 @@ from bson import Decimal128
 from django.http import Http404
 from decimal import Decimal
 from rest_framework import permissions  # Importar permisos
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
+from django.db.models import Avg
+from django.db import connection
 
 
 class BookListAPIView(APIView):
@@ -26,6 +30,10 @@ class BookListAPIView(APIView):
         serializer = BookSerializer(books, many=True)
         return Response(serializer.data)
     
+    @swagger_auto_schema(
+        request_body=BookSerializer,
+        responses={201: BookSerializer}
+    )
     def post(self, request):
         serializer = BookSerializer(data=request.data)
         if serializer.is_valid():
@@ -68,6 +76,10 @@ class BookDetail(APIView):
         except Book.DoesNotExist:
             return None
 
+    @swagger_auto_schema(
+        request_body=BookSerializer,
+        responses={200: BookSerializer}
+    )
     def put(self, request, title, *args, **kwargs):
         book = self.get_object(title)
 
@@ -88,12 +100,6 @@ class BookDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 # Endpoint para obtener el precio promedio de los libros publicados en un año
-from django.db.models import Avg
-
-
-
-
-from django.db import connection
 
 
 from decimal import Decimal  # Importar para trabajar con Decimal
@@ -132,7 +138,20 @@ from rest_framework.permissions import AllowAny
 
 class RegisterView(APIView):
     permission_classes = [AllowAny]
-
+    @swagger_auto_schema(
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'username': openapi.Schema(type=openapi.TYPE_STRING, description='Username'),
+                'password': openapi.Schema(type=openapi.TYPE_STRING, description='Password'),
+                'firstname': openapi.Schema(type=openapi.TYPE_STRING, description='First name'),
+                'lastname': openapi.Schema(type=openapi.TYPE_STRING, description='Last name'),
+                'email': openapi.Schema(type=openapi.TYPE_STRING, description='Email'),
+            },
+            required=['username', 'password']
+        ),
+        responses={201: openapi.Response('User created successfully')}
+    )
     def post(self, request):
         print('request.data')
         print(request.data)
