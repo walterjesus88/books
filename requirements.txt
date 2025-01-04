@@ -5,3 +5,4 @@ djongo==1.3.7
 djangorestframework-simplejwt
 drf-yasg
 gunicorn
+whitenoise
