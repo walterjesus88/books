@@ -6,16 +6,17 @@ Password: 123456
 
 Django
 
-Django REST Framework Docker & Docker Compose GitHub Actions (CI/CD) AWS EC2 (Deployment)
+<h1 align="center">Django REST Framework Docker & Docker Compose GitHub Actions (CI/CD) AWS EC2 (Deployment) </h1>
 
+El desarrollo de este proyecto se hizo con las siguientes tecnologias
 Swagger (API documentation)
 
 🚀 Project Setup Instructions
 
-1️⃣ Clone the Repository
+1️⃣  <p align="left">  Clone the Repository  </p>
 
-git clone https://github.com/walterjesus88/books.git
-cd books
+    git clone https://github.com/walterjesus88/books.git
+    cd books
 
 2️⃣ Build and Run with Docker
 

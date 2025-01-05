@@ -6,42 +6,80 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from .models import Book
 from .serializers import BookSerializer
-import pymongo
-from bson import Decimal128
-from django.http import Http404
-from decimal import Decimal
 from rest_framework import permissions  # Importar permisos
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from django.db.models import Avg
 from django.db import connection
+from rest_framework.exceptions import APIException
 
+from decimal import Decimal  # Importar para trabajar con Decimal
+from bson import Decimal128  # Importar para trabajar con Decimal128
+
+from django.contrib.auth.models import User
+from rest_framework.permissions import AllowAny
+from rest_framework.pagination import PageNumberPagination
+
+class BookListPagination(PageNumberPagination):
+    page_size = 10  # Número de elementos por página
+    page_size_query_param = 'page_size'
+    max_page_size = 100  # Tamaño máximo de página
 
 class BookListAPIView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    def get(self, request):
-        books = Book.objects.all()
+    pagination_class = BookListPagination
+    @swagger_auto_schema(
+        responses={200: BookSerializer(many=True)}
+    ) 
+       
+    def get(self, request, *args, **kwargs):    
+        try:
+            # Simulación de error 500 si se envía un parámetro especial
+            if request.query_params.get('error') == 'true':
+                raise APIException("Simulated internal server error")
+            
+            # Obtener todos los libros
+            books = Book.objects.all()
 
-        # Convertir el campo 'price' de Decimal128 a float antes de pasar al serializador
-        for book in books:
-            if isinstance(book.price, Decimal128):
-                book.price = float(book.price.to_decimal())
+            # Convertir el campo 'price' de Decimal128 a float antes de pasar al serializador
+            for book in books:
+                if isinstance(book.price, Decimal128):
+                    book.price = float(book.price.to_decimal())
 
-        serializer = BookSerializer(books, many=True)
-        return Response(serializer.data)
+            # Paginación
+            paginator = self.pagination_class()
+            result_page = paginator.paginate_queryset(books, request)
+            serializer = BookSerializer(result_page, many=True)
+
+            return paginator.get_paginated_response(serializer.data)
+
+        except APIException as api_exc:
+            return Response({"detail": str(api_exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({"detail": f"An unexpected error occurred: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
     
     @swagger_auto_schema(
         request_body=BookSerializer,
-        responses={201: BookSerializer}
+        responses={201: BookSerializer, 500: "Internal Server Error"}
     )
     def post(self, request):
-        serializer = BookSerializer(data=request.data)
-        if serializer.is_valid():
-            #book_data = serializer.validated_data
-            #book = Book(**book_data)
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            # Lanzar un error inmediatamente si el título es "Error"
+            title = request.data.get('title')
+            if title and title.lower() == "error":
+                raise APIException("Simulated internal server error")
+           
+            serializer = BookSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except APIException as api_exc:
+            return Response({"detail": str(api_exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({"detail": f"An unexpected error occurred: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
     
 
 class BookDetail(APIView):
@@ -50,26 +88,7 @@ class BookDetail(APIView):
     """
 
     permission_classes = [permissions.IsAuthenticated]
-    #def get_object(self, title):
-        #return Book.objects.filter(title=title)
-    
-    def get(self, request, title, format=None):
-        try:
-            # book= self.get_object(title)
-            # serializer = BookSerializer(book)
-            # return Response(serializer.data)
-            book = Book.objects.get(title=title)
-            data = {
-                "title": book.title,
-                "author": book.author,
-                "published_date": book.published_date,
-                "genre": book.genre,
-                "price": float(book.price),  # Convertimos Decimal128 a float
-            }
-            return Response(data)
-        except Book.DoesNotExist:
-            return Response({"error": "Book no encontrado"}, status=404)
-    
+
     def get_object(self, title):
         try:
             return Book.objects.get(title=title)  # Usamos get para obtener un solo objeto
@@ -77,34 +96,88 @@ class BookDetail(APIView):
             return None
 
     @swagger_auto_schema(
+        responses={200: BookSerializer}
+    )
+    def get(self, request, title, *args, **kwargs):
+        try:
+            # Simular un error 500 si el título es "Error"
+            if title == "Error":
+                raise APIException("Simulated internal server error")
+            
+            book = Book.objects.get(title=title)
+
+            if not book:
+                return Response({"error": "Book no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+        
+            data = {
+                "title": book.title,
+                "author": book.author,
+                "published_date": book.published_date,
+                "genre": book.genre,
+                "price": float(book.price),  # Convertimos Decimal128 a float
+            }                
+            return Response(data)
+                
+        except APIException as api_exc:
+            return Response({"detail": str(api_exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({"detail": f"An unexpected error occurred: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+
+    @swagger_auto_schema(
         request_body=BookSerializer,
         responses={200: BookSerializer}
     )
     def put(self, request, title, *args, **kwargs):
-        book = self.get_object(title)
+        try:
+            # Forzar un error 500 si el título es "Error"
+            if title == "Error":
+                raise APIException("Simulated internal server error")
+        
+            book = self.get_object(title)
 
-        if not book:
-            return Response({"error": "Book not found"}, status=status.HTTP_404_NOT_FOUND)
+            if not book:
+                return Response({"error": "Book no encontrado"}, status=status.HTTP_404_NOT_FOUND)
 
-        # Usamos el serializer sin `many=True` porque solo queremos actualizar un libro
-        serializer = BookSerializer(book, data=request.data, partial=True)
+            # Usamos el serializer sin `many=True` porque solo queremos actualizar un libro
+            serializer = BookSerializer(book, data=request.data, partial=True)
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Manejo de excepciones para devolver un error 500
+        except APIException as api_exc:
+            return Response({"detail": str(api_exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({"detail": f"An unexpected error occurred: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    @swagger_auto_schema(
+        responses={204: 'No Content'}
+    )
     def delete(self, request,title, format= None):
-        book = self.get_object(title)
-        book.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        try:
+            # Simular un error 500 si el título es "Error"
+            if title == "Error":
+                raise APIException("Simulated internal server error")
+            
+            book = self.get_object(title)
+
+            if not book:
+                    return Response({"error": "Book not found"}, status=status.HTTP_404_NOT_FOUND)
+
+            book.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+    
+        # Manejo de excepciones para devolver un error 500
+        except APIException as api_exc:
+            return Response({"detail": str(api_exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({"detail": f"An unexpected error occurred: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Endpoint para obtener el precio promedio de los libros publicados en un año
-
-
-from decimal import Decimal  # Importar para trabajar con Decimal
-from bson import Decimal128  # Importar para trabajar con Decimal128
-
 class BookAvgPriceByYearAPIView(APIView):
     def get(self, request, year):
         try:
@@ -133,9 +206,6 @@ class BookAvgPriceByYearAPIView(APIView):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-from django.contrib.auth.models import User
-from rest_framework.permissions import AllowAny
-
 class RegisterView(APIView):
     permission_classes = [AllowAny]
     @swagger_auto_schema(
@@ -153,8 +223,7 @@ class RegisterView(APIView):
         responses={201: openapi.Response('User created successfully')}
     )
     def post(self, request):
-        print('request.data')
-        print(request.data)
+
         username = request.data.get('username')
         password = request.data.get('password')
         first_name = request.data.get('firstname')

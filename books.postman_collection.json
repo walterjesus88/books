@@ -1,0 +1,557 @@
+{
+	"info": {
+		"_postman_id": "75b79833-ddeb-4f3a-886e-85802ae42df8",
+		"name": "books",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6893900"
+	},
+	"item": [
+		{
+			"name": "books-500 error",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDMzNDQyLCJpYXQiOjE3MzYwMjk4NDIsImp0aSI6IjczYzE2ZGEyNzdiYjQ2MzE4NmFiNTdjNzA3OWY3NDIyIiwidXNlcl9pZCI6MX0.tB96IvZjcGqLMiRyXEyiWMjMyRmT6b7KDpN1pdrquuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Error\",\r\n    \"author\": \"John Doe\",\r\n    \"published_date\": \"2024-01-01\",\r\n    \"genre\": \"Fiction\",\r\n    \"price\": 19\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books-200 ok",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDMzNDQyLCJpYXQiOjE3MzYwMjk4NDIsImp0aSI6IjczYzE2ZGEyNzdiYjQ2MzE4NmFiNTdjNzA3OWY3NDIyIiwidXNlcl9pZCI6MX0.tB96IvZjcGqLMiRyXEyiWMjMyRmT6b7KDpN1pdrquuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"jjj\", \r\n    \"author\": \"Dross\",\r\n    \"published_date\": \"2025-01-04\",\r\n    \"genre\": \"Fiction\",\r\n    \"price\": 19.99\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\": \"wjesus88\",\r\n\t\"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://54.215.184.113:8000/api/token/",
+					"protocol": "http",
+					"host": [
+						"54",
+						"215",
+						"184",
+						"113"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books-500 error",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDMzNDQyLCJpYXQiOjE3MzYwMjk4NDIsImp0aSI6IjczYzE2ZGEyNzdiYjQ2MzE4NmFiNTdjNzA3OWY3NDIyIiwidXNlcl9pZCI6MX0.tB96IvZjcGqLMiRyXEyiWMjMyRmT6b7KDpN1pdrquuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"error\", \"author\": \"no record\", \"published_date\": \"2020-12-15\", \"genre\": \"Fiction\", \"price\": 180.99}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/Error/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"Error",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books-200 ok",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDMzNDQyLCJpYXQiOjE3MzYwMjk4NDIsImp0aSI6IjczYzE2ZGEyNzdiYjQ2MzE4NmFiNTdjNzA3OWY3NDIyIiwidXNlcl9pZCI6MX0.tB96IvZjcGqLMiRyXEyiWMjMyRmT6b7KDpN1pdrquuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"error\", \"author\": \"no record\", \"published_date\": \"2020-12-15\", \"genre\": \"Fiction\", \"price\": 180.99}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/Error/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"Error",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books-500 error",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDMzNDQyLCJpYXQiOjE3MzYwMjk4NDIsImp0aSI6IjczYzE2ZGEyNzdiYjQ2MzE4NmFiNTdjNzA3OWY3NDIyIiwidXNlcl9pZCI6MX0.tB96IvZjcGqLMiRyXEyiWMjMyRmT6b7KDpN1pdrquuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"error\", \"author\": \"no record\", \"published_date\": \"2020-12-15\", \"genre\": \"Fiction\", \"price\": 180.99}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/Error/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"Error",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books-500 error",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDQ5Njc1LCJpYXQiOjE3MzYwNDYwNzUsImp0aSI6IjZhYjg3NmQ5OGU0YTQ5MTI5NDVkNzk1MDc4OWY1ZTYwIiwidXNlcl9pZCI6MX0.G9-tgOfyBXnZbWYJb4kJr3o7UCYvRSTs2w25bhmUpxY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/Error/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"Error",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books-200 ok",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDQ5Njc1LCJpYXQiOjE3MzYwNDYwNzUsImp0aSI6IjZhYjg3NmQ5OGU0YTQ5MTI5NDVkNzk1MDc4OWY1ZTYwIiwidXNlcl9pZCI6MX0.G9-tgOfyBXnZbWYJb4kJr3o7UCYvRSTs2w25bhmUpxY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/jjj/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"jjj",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books-200 ok",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDgzODczLCJpYXQiOjE3MzYwODAyNzMsImp0aSI6ImY4YjQ5NmMzNTZmNDRmYTNiZmU0Yjg5Y2NiYTA0ZmFmIiwidXNlcl9pZCI6Mn0.TOK0s2wRk6oUH-P8WBNVe48a42nIsGZow9DAXiXsjj8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books-500 error",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDgzODczLCJpYXQiOjE3MzYwODAyNzMsImp0aSI6ImY4YjQ5NmMzNTZmNDRmYTNiZmU0Yjg5Y2NiYTA0ZmFmIiwidXNlcl9pZCI6Mn0.TOK0s2wRk6oUH-P8WBNVe48a42nIsGZow9DAXiXsjj8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/?error=true",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						""
+					],
+					"query": [
+						{
+							"key": "error",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detail books-200 ok",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDgzODczLCJpYXQiOjE3MzYwODAyNzMsImp0aSI6ImY4YjQ5NmMzNTZmNDRmYTNiZmU0Yjg5Y2NiYTA0ZmFmIiwidXNlcl9pZCI6Mn0.TOK0s2wRk6oUH-P8WBNVe48a42nIsGZow9DAXiXsjj8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/?error=true",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						""
+					],
+					"query": [
+						{
+							"key": "error",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detail books-500 error",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDgzODczLCJpYXQiOjE3MzYwODAyNzMsImp0aSI6ImY4YjQ5NmMzNTZmNDRmYTNiZmU0Yjg5Y2NiYTA0ZmFmIiwidXNlcl9pZCI6Mn0.TOK0s2wRk6oUH-P8WBNVe48a42nIsGZow9DAXiXsjj8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/?error=true",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						""
+					],
+					"query": [
+						{
+							"key": "error",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "avg books-200 ok",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDkxNTAxLCJpYXQiOjE3MzYwODc5MDEsImp0aSI6ImUwOTA2ODQyNjNiZjQzOThhMjVhMjFhNGUxMzFhYTQzIiwidXNlcl9pZCI6MX0.dDhfdPVECFLeCxRNhQf94jhi_qqw7MmizaKFPpnJbZU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/avg-price/2020/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"avg-price",
+						"2020",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "avg books-500 error",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDkzODcxLCJpYXQiOjE3MzYwOTAyNzEsImp0aSI6IjQ5ZTgwYzViZGM5NTQ2YmVhOTNiZmUwOWVhMjYxYzgwIiwidXNlcl9pZCI6Mn0.FyQEvPXqFkL8b7yck5RXknD_ImzReVnBjZehA-PG6jQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/avg-price/Error/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"avg-price",
+						"Error",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

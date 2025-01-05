@@ -8,6 +8,6 @@ urlpatterns = [
     #path('books/<str:title>/', BookDetail.as_view()),
     path('<str:title>/', BookDetail.as_view(), name='book-detail'),
     #path('books/create/', BookCreateAPIView.as_view(), name='book-create'),
-    path('books/avg-price/<int:year>/', BookAvgPriceByYearAPIView.as_view(), name='book-avg-price-by-year')
+    path('avg-price/<int:year>/', BookAvgPriceByYearAPIView.as_view(), name='book-avg-price-by-year')
 
 ]
