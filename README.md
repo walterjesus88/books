@@ -20,17 +20,25 @@ Swagger (API documentation)
 
 2️⃣ Build and Run with Docker
 
-The project is containerized using Docker. To build and run the API locally, use the following command:
+El proyecto está en contenedores utilizando Docker. Para compilar y ejecutar la API localmente, utilice el siguiente comando:
 
-docker-compose up --build
+    doker-compose up --build
 
-This will build the Docker images and start the containers.
+Esto creará las imágenes de Docker e iniciará los contenedores.
 
-3️⃣ Swagger API Documentation
+   docker-compose exec web python manage.py makemigrates
+   docker-compose exec web python manage.py migrate   #creara las tablas de django y books
+
+Para correr los test ejecuta lo siguiente:
+
+   docker-compose exec web python manage.py test books
+
+
+3️⃣ Swagger API Documentation 
 
 The project includes Swagger for interactive API documentation. Once the server is running, you can access the Swagger interface at:
 
-http://localhost:8000/swagger/
+    http://localhost:8000/swagger/ 
 
 Here, you can explore all the API endpoints, see request and response formats, and test the API directly from the browser.
 
