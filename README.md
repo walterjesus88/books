@@ -173,7 +173,12 @@ El servidor EC2 con la aplicacion Django REST en producción.
 
 ![aws](aws.png)
 
-📞 Contact
+Por ultimo hay una colección en Postman con las llamadas a cada una de las APIs, que es el archivo 
+    
+    books.postman_collection.json
+
+
+📞 Contacto
 
 Para cualquier consulta puedes contactar con:
 
