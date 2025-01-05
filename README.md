@@ -83,7 +83,7 @@ El github actions ya clona e instala dependencias para su funcionamiento
 
 Run the Docker Containers:
 
-    docker-compose up --build -d #en caso de quere reiniciar
+    docker-compose up --build -d  #en caso de querer reiniciar
 
 The application will be accessible at the EC2 public IP address on port 8000.
 
@@ -167,7 +167,7 @@ Se uso Djongo para usar ORM Django
 Al hacer git push origin main, github actions hace el deploy automatico al servidor EC2
 
 
-![github_actions](mongo.png)
+![github_actions](github_actions.png)
 
 El servidor EC2 con la aplicacion Django REST en producción.
 
