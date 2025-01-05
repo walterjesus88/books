@@ -22,53 +22,55 @@ Swagger (API documentation)
 
 El proyecto está en contenedores utilizando Docker. Para compilar y ejecutar la API localmente, utilice el siguiente comando:
 
-    doker-compose up --build
+    docker-compose up --build
 
 Esto creará las imágenes de Docker e iniciará los contenedores.
 
-   docker-compose exec web python manage.py makemigrates
-   docker-compose exec web python manage.py migrate   #creara las tablas de django y books
+    docker-compose exec web python manage.py makemigrates
+    docker-compose exec web python manage.py migrate   #creara las tablas de django y books
 
 Para correr los test ejecuta lo siguiente:
 
-   docker-compose exec web python manage.py test books
+    docker-compose exec web python manage.py test books
 
 
 3️⃣ Swagger API Documentation 
 
-The project includes Swagger for interactive API documentation. Once the server is running, you can access the Swagger interface at:
+El proyecto incluye Swagger para documentación API interactiva. Una vez que el servidor se esté ejecutando, puede acceder a la interfaz Swagger en:
 
     http://localhost:8000/swagger/ 
 
-Here, you can explore all the API endpoints, see request and response formats, and test the API directly from the browser.
+Aquí puede explorar todos los puntos finales de la API, ver los formatos de solicitud y respuesta y probar la API directamente desde el navegador.
 
 4️⃣ GitHub Actions (CI/CD)
 
-This project uses GitHub Actions to automate testing and deployment processes. The workflow file is defined in the .github/workflows/ directory.
+Este proyecto utiliza GitHub Actions para automatizar los procesos de prueba e implementación. El archivo de flujo de trabajo se define en el directorio .github/workflows/.
 
-Every push to the repository triggers the following actions:
+Cada envío al repositorio desencadena las siguientes acciones:
 
-Run Tests: Ensures the application is working as expected.
+Ejecutar pruebas: garantiza que la aplicación funcione como se esperaba.
 
-Build Docker Images: Creates Docker images for the application.
+Crear imágenes de Docker: crea imágenes de Docker para la aplicación.
 
-Deploy to EC2: Automatically deploys the updated application to the EC2 instance.
+Implementar en EC2: implementa automáticamente la aplicación actualizada en la instancia EC2.
 
 5️⃣ AWS EC2 Deployment
 
-The application has been deployed to an AWS EC2 instance. Below are the steps followed for the deployment:
+La aplicación se ha implementado en una instancia AWS EC2. A continuación se detallan los pasos seguidos para la implementación:
 
 ✅ Steps to Deploy on EC2:
 
 Launch an EC2 Instance:
 
-Amazon Linux 2 or Ubuntu as the OS.
+Ubuntu as the OS.
 
 SSH into the Instance:
 
 ssh -i <your-key.pem> ec2-user@<ec2-public-ip>
 
-Install Docker and Docker Compose:
+En este cado se uso el ip http://54.215.184.113:8000/swagger/
+
+Se Instalo Docker y Docker Compose:
 
 sudo yum update -y
 sudo yum install docker -y
@@ -77,16 +79,16 @@ sudo systemctl enable docker
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-Clone the Project Repository:
-
-git clone <your-repository-url>
-cd <project-folder>
+El github actions ya clona e instala dependencias para su funcionamiento
 
 Run the Docker Containers:
 
-docker-compose up --build -d
+docker-compose up --build -d en caso de quere reiniciar
 
 The application will be accessible at the EC2 public IP address on port 8000.
+
+![Texto alternativo](swagger.png)
+
 
 📚 API Endpoints
 
@@ -102,11 +104,11 @@ Endpoint
 
 Description
 
-GET /api/books/
+    GET /api/books/
 
 Retrieve all books
 
-POST /api/books/
+    POST /api/books/
 
 Create a new book
 
