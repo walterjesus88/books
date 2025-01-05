@@ -96,7 +96,7 @@ class BookDetail(APIView):
             return None
 
     @swagger_auto_schema(
-        responses={200: BookSerializer}
+        responses={200: BookSerializer, 404: "Book not found", 500: "Internal Server Error"}
     )
     def get(self, request, title, *args, **kwargs):
         try:
@@ -104,23 +104,29 @@ class BookDetail(APIView):
             if title == "Error":
                 raise APIException("Simulated internal server error")
             
+            # Intentamos obtener el libro por título
             book = Book.objects.get(title=title)
-
-            if not book:
-                return Response({"error": "Book no encontrado"}, status=status.HTTP_404_NOT_FOUND)
-        
+            
+            # Si llegamos aquí, significa que encontramos el libro
             data = {
                 "title": book.title,
                 "author": book.author,
                 "published_date": book.published_date,
                 "genre": book.genre,
                 "price": float(book.price),  # Convertimos Decimal128 a float
-            }                
+            }
             return Response(data)
-                
+        
+        except Book.DoesNotExist:
+            # Si el libro no existe, devolver un error 404
+            return Response({"error": "Book not found"}, status=status.HTTP_404_NOT_FOUND)
+        
         except APIException as api_exc:
+            # Si hay un error APIException, manejarlo
             return Response({"detail": str(api_exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
         except Exception as e:
+            # Para cualquier otro tipo de error, manejarlo
             return Response({"detail": f"An unexpected error occurred: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 

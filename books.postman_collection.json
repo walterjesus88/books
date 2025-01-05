@@ -14,7 +14,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDMzNDQyLCJpYXQiOjE3MzYwMjk4NDIsImp0aSI6IjczYzE2ZGEyNzdiYjQ2MzE4NmFiNTdjNzA3OWY3NDIyIiwidXNlcl9pZCI6MX0.tB96IvZjcGqLMiRyXEyiWMjMyRmT6b7KDpN1pdrquuY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MTA1MTgyLCJpYXQiOjE3MzYxMDE1ODIsImp0aSI6IjUyNmYyMGMyOWUyNDRiNWY5ZTk4OWFmYjFlMTY2NzJiIiwidXNlcl9pZCI6Mn0.gaqi-u77lMj3OSxjdYOuhJcBx10GBGZ-V8R8Zg_rOlk",
 							"type": "string"
 						}
 					]
@@ -23,7 +23,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Error\",\r\n    \"author\": \"John Doe\",\r\n    \"published_date\": \"2024-01-01\",\r\n    \"genre\": \"Fiction\",\r\n    \"price\": 19\r\n}",
+					"raw": "{\r\n    \"title\": \"Cien años de soledad\",\r\n    \"author\": \"John Doe\",\r\n    \"published_date\": \"2024-01-01\",\r\n    \"genre\": \"Fiction\",\r\n    \"price\": \"kk\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -107,13 +107,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://54.215.184.113:8000/api/token/",
+					"raw": "http://127.0.0.1:8000/api/token/",
 					"protocol": "http",
 					"host": [
-						"54",
-						"215",
-						"184",
-						"113"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "8000",
 					"path": [
@@ -133,7 +133,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDMzNDQyLCJpYXQiOjE3MzYwMjk4NDIsImp0aSI6IjczYzE2ZGEyNzdiYjQ2MzE4NmFiNTdjNzA3OWY3NDIyIiwidXNlcl9pZCI6MX0.tB96IvZjcGqLMiRyXEyiWMjMyRmT6b7KDpN1pdrquuY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MTA1MTgyLCJpYXQiOjE3MzYxMDE1ODIsImp0aSI6IjUyNmYyMGMyOWUyNDRiNWY5ZTk4OWFmYjFlMTY2NzJiIiwidXNlcl9pZCI6Mn0.gaqi-u77lMj3OSxjdYOuhJcBx10GBGZ-V8R8Zg_rOlk",
 							"type": "string"
 						}
 					]
@@ -142,7 +142,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"title\": \"error\", \"author\": \"no record\", \"published_date\": \"2020-12-15\", \"genre\": \"Fiction\", \"price\": 180.99}",
+					"raw": "{\"title\": \"Error\", \"price\": 90.99}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -177,7 +177,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDMzNDQyLCJpYXQiOjE3MzYwMjk4NDIsImp0aSI6IjczYzE2ZGEyNzdiYjQ2MzE4NmFiNTdjNzA3OWY3NDIyIiwidXNlcl9pZCI6MX0.tB96IvZjcGqLMiRyXEyiWMjMyRmT6b7KDpN1pdrquuY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MTA1MTgyLCJpYXQiOjE3MzYxMDE1ODIsImp0aSI6IjUyNmYyMGMyOWUyNDRiNWY5ZTk4OWFmYjFlMTY2NzJiIiwidXNlcl9pZCI6Mn0.gaqi-u77lMj3OSxjdYOuhJcBx10GBGZ-V8R8Zg_rOlk",
 							"type": "string"
 						}
 					]
@@ -186,7 +186,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"title\": \"error\", \"author\": \"no record\", \"published_date\": \"2020-12-15\", \"genre\": \"Fiction\", \"price\": 180.99}",
+					"raw": "{\"genre\": \"Novela\", \"price\": 19.99}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -194,7 +194,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/books/Error/",
+					"raw": "http://127.0.0.1:8000/api/books/Don Quijote de la Mancha/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -206,7 +206,7 @@
 					"path": [
 						"api",
 						"books",
-						"Error",
+						"Don Quijote de la Mancha",
 						""
 					]
 				}
@@ -214,14 +214,14 @@
 			"response": []
 		},
 		{
-			"name": "books-500 error",
+			"name": "books-400 error",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDMzNDQyLCJpYXQiOjE3MzYwMjk4NDIsImp0aSI6IjczYzE2ZGEyNzdiYjQ2MzE4NmFiNTdjNzA3OWY3NDIyIiwidXNlcl9pZCI6MX0.tB96IvZjcGqLMiRyXEyiWMjMyRmT6b7KDpN1pdrquuY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MTA1MTgyLCJpYXQiOjE3MzYxMDE1ODIsImp0aSI6IjUyNmYyMGMyOWUyNDRiNWY5ZTk4OWFmYjFlMTY2NzJiIiwidXNlcl9pZCI6Mn0.gaqi-u77lMj3OSxjdYOuhJcBx10GBGZ-V8R8Zg_rOlk",
 							"type": "string"
 						}
 					]
@@ -230,7 +230,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"title\": \"error\", \"author\": \"no record\", \"published_date\": \"2020-12-15\", \"genre\": \"Fiction\", \"price\": 180.99}",
+					"raw": "{ \"price\": \"invaluable\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -238,7 +238,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/books/Error/",
+					"raw": "http://127.0.0.1:8000/api/books/Padre Rico/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -250,7 +250,7 @@
 					"path": [
 						"api",
 						"books",
-						"Error",
+						"Padre Rico",
 						""
 					]
 				}
@@ -335,7 +335,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDgzODczLCJpYXQiOjE3MzYwODAyNzMsImp0aSI6ImY4YjQ5NmMzNTZmNDRmYTNiZmU0Yjg5Y2NiYTA0ZmFmIiwidXNlcl9pZCI6Mn0.TOK0s2wRk6oUH-P8WBNVe48a42nIsGZow9DAXiXsjj8",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDkzODcxLCJpYXQiOjE3MzYwOTAyNzEsImp0aSI6IjQ5ZTgwYzViZGM5NTQ2YmVhOTNiZmUwOWVhMjYxYzgwIiwidXNlcl9pZCI6Mn0.FyQEvPXqFkL8b7yck5RXknD_ImzReVnBjZehA-PG6jQ",
 							"type": "string"
 						}
 					]
@@ -409,7 +409,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDgzODczLCJpYXQiOjE3MzYwODAyNzMsImp0aSI6ImY4YjQ5NmMzNTZmNDRmYTNiZmU0Yjg5Y2NiYTA0ZmFmIiwidXNlcl9pZCI6Mn0.TOK0s2wRk6oUH-P8WBNVe48a42nIsGZow9DAXiXsjj8",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MTAzMTE5LCJpYXQiOjE3MzYwOTk1MTksImp0aSI6ImQyZDcwOTEzZmJiNzRhNDE4MGIxMTc5MWVkMDVkYzdjIiwidXNlcl9pZCI6Mn0.Itt0h2yQoj1XJPuWrc38sc5DYmjoIrm-Xet8JRvw210",
 							"type": "string"
 						}
 					]
@@ -417,7 +417,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/books/?error=true",
+					"raw": "http://127.0.0.1:8000/api/books/vv/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -429,13 +429,8 @@
 					"path": [
 						"api",
 						"books",
+						"vv",
 						""
-					],
-					"query": [
-						{
-							"key": "error",
-							"value": "true"
-						}
 					]
 				}
 			},
@@ -489,7 +484,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDkxNTAxLCJpYXQiOjE3MzYwODc5MDEsImp0aSI6ImUwOTA2ODQyNjNiZjQzOThhMjVhMjFhNGUxMzFhYTQzIiwidXNlcl9pZCI6MX0.dDhfdPVECFLeCxRNhQf94jhi_qqw7MmizaKFPpnJbZU",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MTA1MTgyLCJpYXQiOjE3MzYxMDE1ODIsImp0aSI6IjUyNmYyMGMyOWUyNDRiNWY5ZTk4OWFmYjFlMTY2NzJiIiwidXNlcl9pZCI6Mn0.gaqi-u77lMj3OSxjdYOuhJcBx10GBGZ-V8R8Zg_rOlk",
 							"type": "string"
 						}
 					]
