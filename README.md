@@ -68,22 +68,22 @@ SSH into the Instance:
 
 ssh -i <your-key.pem> ec2-user@<ec2-public-ip>
 
-En este cado se uso el ip http://54.215.184.113:8000/swagger/
+En este cado se uso el ip http://54.215.184.113/admin/
 
 Se Instalo Docker y Docker Compose:
 
-sudo yum update -y
-sudo yum install docker -y
-sudo systemctl start docker
-sudo systemctl enable docker
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+    sudo yum update -y
+    sudo yum install docker -y
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
 
 El github actions ya clona e instala dependencias para su funcionamiento
 
 Run the Docker Containers:
 
-docker-compose up --build -d en caso de quere reiniciar
+    docker-compose up --build -d #en caso de quere reiniciar
 
 The application will be accessible at the EC2 public IP address on port 8000.
 
@@ -96,11 +96,25 @@ The application will be accessible at the EC2 public IP address on port 8000.
 
 The API requires authentication for certain endpoints. Users can register and log in to access protected endpoints.
 
+🔍 Swagger Integration
+
+Swagger se ha integrado para proporcionar una interfaz fácil de usar para explorar la API. Documenta automáticamente todos los puntos finales disponibles y proporciona una plataforma interactiva para probarlos.
+
+    http://54.215.184.113:8000/swagger/ 
+    
+El usuario creado es wjesus88 y el password es: 123456.
+
+
 📚 Books API
+
 
 Method
 
 Endpoint
+
+Con esto obtienes el token para los demas recursos
+
+    POST /api/token/
 
 Description
 
@@ -112,15 +126,15 @@ Retrieve all books
 
 Create a new book
 
-GET /api/books/{title}/
+    GET /api/books/{title}/
 
 Retrieve a book by title
 
-PUT /api/books/{title}/
+    PUT /api/books/{title}/
 
 Update a book by title
 
-DELETE /api/books/{title}/
+    DELETE /api/books/{title}/
 
 Delete a book by title
 
@@ -128,73 +142,40 @@ Delete a book by title
 
 Method Endpoint Description
 
-GET /api/books/avg-price/{year}/
+    GET /api/books/avg-price/{year}/
 
-Retrieve the average price of books for a given year
+Recuperar el precio medio de los libros para un año determinado.
 
 🧑‍💻 User Registration API
 
 Method Endpoint Description
 
-POST /api/register/
+    POST /api/register/
 
 Register a new user
 
-🔍 Swagger Integration
 
-Swagger has been integrated to provide a user-friendly interface for exploring the API. It automatically documents all available endpoints and provides an interactive platform to test them.
+El desarrollo tiene paginacion para el method GET 
+se uso Postman e insomnia para probar los Endpoints
 
-To access the Swagger UI:
+![Texto alternativo](postman.png)
 
-http://54.215.184.113:8000/swagger/
+Se uso Djongo para usar ORM Django 
 
-🔧 Project Structure
+![Texto alternativo](mongo.png)
 
-├── books
-│   ├── books
-│   │   ├── views.py
-│   │   ├── models.py
-│   │   ├── serializers.py
-│   │   └── urls.py
-│   ├── Dockerfile
-│   ├── docker-compose.yml
-│   ├── manage.py
-│   └── .github
-│       └── workflows
-│           └── django.yml
-│   ├── myapp
-│   │   ├── views.py
-│   │   ├── models.py
-│   │   ├── serializers.py
-│   │   └── urls.py
-│   │   └── manage.py
+Al hacer git push origin main, github actions hace el deploy automatico al servidor EC2
 
 
-🛡 Security Considerations
+![github_actions](mongo.png)
 
-Do not expose sensitive credentials in your code.
+El servidor EC2 con la aplicacion Django REST en producción.
 
-Always use environment variables for sensitive data like passwords, tokens, etc.
-
-Secure your EC2 instance by configuring security groups to allow only necessary traffic.
-
-🧩 Future Improvements
-
-Add JWT authentication.
-
-Implement pagination for large datasets.
-
-Add unit tests for better coverage.
-
-Use a cloud database service like AWS RDS for better scalability.
-
-🤝 Contributing
-
-Feel free to open issues or submit pull requests if you find any bugs or have suggestions for improvements.
+![aws](aws.png)
 
 📞 Contact
 
-For any inquiries, you can contact:
+Para cualquier consulta puedes contactar con:
 
 Author: Walter
 
