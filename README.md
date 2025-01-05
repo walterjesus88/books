@@ -1,10 +1,5 @@
-Username: wjesus88
-
-Password: 123456
 
 🛠 Tech Stack
-
-Django
 
 <h1 align="center">Django REST Framework Docker & Docker Compose GitHub Actions (CI/CD) AWS EC2 (Deployment) </h1>
 
@@ -102,7 +97,12 @@ Swagger se ha integrado para proporcionar una interfaz fácil de usar para explo
 
     http://54.215.184.113:8000/swagger/ 
     
-El usuario creado es wjesus88 y el password es: 123456.
+Puedes usar las siguientes credenciales.
+
+Username: wjesus88
+
+Password: 123456
+
 
 
 📚 Books API
