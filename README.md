@@ -68,7 +68,7 @@ Ubuntu as the OS.
 
 SSH into the Instance:
 
-ssh -i <your-key.pem> ec2-user@<ec2-public-ip>
+ssh -i <your-key.pem> ec2-user@54.215.184.113
 
 En este cado se uso el ip http://54.215.184.113/admin/
 
