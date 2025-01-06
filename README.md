@@ -94,30 +94,27 @@ The application will be accessible at the EC2 public IP address on port 8000.
 
 📚 API Endpoints
 
-🔐 Authentication
 
-The API requires authentication for certain endpoints. Users can register and log in to access protected endpoints.
+La API requiere autenticación para ciertos puntos finales. Los usuarios pueden registrarse e iniciar sesión para acceder a puntos finales protegidos.
 
 🔍 Swagger Integration
 
 Swagger se ha integrado para proporcionar una interfaz fácil de usar para explorar la API. Documenta automáticamente todos los puntos finales disponibles y proporciona una plataforma interactiva para probarlos.
 
     http://54.215.184.113:8000/swagger/ 
+
+🔐 Authentication
     
 Puedes usar las siguientes credenciales.
 
-Username: wjesus88
+    Username: wjesus88
 
-Password: 123456
-
+    Password: 123456
 
 
 📚 Books API
 
-
-Method
-
-Endpoint
+Method Endpoint
 
 Con esto obtienes el token para los demas recursos
 
@@ -147,15 +144,15 @@ Delete a book by title
 
 📊 Average Price API
 
-Method Endpoint Description
+Method Endpoint avg-price
 
     GET /api/books/avg-price/{year}/
 
-Recuperar el precio medio de los libros para un año determinado.
+Recupera el precio medio de los libros para un año determinado.
 
 🧑‍💻 User Registration API
 
-Method Endpoint Description
+Method Endpoint Register
 
     POST /api/register/
 
