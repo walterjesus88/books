@@ -1,10 +1,17 @@
 
 🛠 Tech Stack
 
-<h1 align="center">Django REST Framework Docker & Docker Compose GitHub Actions (CI/CD) AWS EC2 (Deployment) </h1>
+<h1 align="center">Django REST Framework Books con Docker & GitHub Actions (CI/CD) & AWS EC2 (Deployment) </h1>
 
 El desarrollo de este proyecto se hizo con las siguientes tecnologias
-Swagger (API documentation)
+
+    1.- Django REST Framework
+    2.- Mongodb (Djongo)
+    3.- Docker & Docker Compose
+    4.- GitHub Actions (CI/CD)
+    5.- AWS Capa EC2 
+
+
 
 🚀 Project Setup Instructions
 
