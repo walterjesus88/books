@@ -15,7 +15,7 @@ El desarrollo de este proyecto se hizo con las siguientes tecnologias
 
 🚀 Project Setup Instructions
 
-1️⃣  <p align="left">  Clone the Repository  </p>
+1️⃣    Clone the Repository  
 
     git clone https://github.com/walterjesus88/books.git
     cd books
